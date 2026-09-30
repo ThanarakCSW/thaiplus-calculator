@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { BadgeCheck, Check, ChevronDown, CircleHelp, Clock3, HeartHandshake, Info, LoaderCircle, Plus, ReceiptText, RotateCcw, ShieldCheck, Smartphone, TriangleAlert, Wallet, X } from "lucide-react";
+import { BadgeCheck, Check, ChevronDown, CircleHelp, Clock3, HeartHandshake, Info, Plus, ReceiptText, RotateCcw, ShieldCheck, Smartphone, TriangleAlert, Wallet, X } from "lucide-react";
 import { calculate, formatMoney, isMoneyInputText, maximumPurchaseForBalance, parseDailyBalance, parseMoney } from "../lib/calculator";
 import { useCalculatorTool } from "../lib/use-calculator-tool";
 import { useDailyDraft } from "../lib/use-daily-draft";
-
-const QUICK_AMOUNTS = [100, 200, 300, 500];
 
 function Amount({ value, testId, className = "" }: { value: number | null; testId?: string; className?: string }) {
   const text = value === null ? "—" : formatMoney(value);
@@ -14,7 +12,7 @@ function Amount({ value, testId, className = "" }: { value: number | null; testI
 }
 
 export default function Home() {
-  const { balance, purchase, ready, newDay, storageStatus, setBalance, setPurchase, clearData } = useDailyDraft();
+  const { balance, purchase, ready, newDay, setBalance, setPurchase, clearData } = useDailyDraft();
   useCalculatorTool(setBalance, setPurchase);
   const purchaseRef = useRef<HTMLInputElement>(null);
   const parsedBalance = parseDailyBalance(balance);
@@ -67,10 +65,6 @@ export default function Home() {
       <main className="main-content">
         <div className="page-heading">
           <div><p className="eyebrow">เครื่องคำนวณสิทธิ์รายวัน</p><h1>ก่อนจ่าย <span>เช็กให้ชัวร์</span></h1><p className="heading-description">รู้ทันทีว่าคุณจ่ายเท่าไร รัฐช่วยเท่าไร</p></div>
-          <div className={`save-indicator ${storageStatus === "unavailable" ? "save-unavailable" : ""}`}>
-            {storageStatus === "loading" || storageStatus === "saving" ? <LoaderCircle size={14} className="animate-spin" /> : storageStatus === "unavailable" ? <Info size={14} /> : <Check size={14} />}
-            <span>{storageStatus === "loading" ? "กำลังโหลดข้อมูล" : storageStatus === "saving" ? "กำลังบันทึก…" : storageStatus === "unavailable" ? "ใช้ได้ แต่บันทึกในเครื่องไม่ได้" : "จำข้อมูลในเครื่องแล้ว"}</span>
-          </div>
         </div>
 
         {newDay && <p className="day-notice"><Info size={17} /> วันนี้เริ่มสิทธิ์ใหม่ 200 บาท หากใช้ไปแล้วให้ปรับยอดคงเหลือก่อนคำนวณ</p>}
@@ -101,7 +95,6 @@ export default function Home() {
                 {purchase && <button type="button" onClick={clearPurchase} aria-label="ล้างยอดซื้อที่กรอก" className="clear-input"><X size={17} /></button>}
               </div>
               <p id="purchase-help" className={`field-help ${parsedPurchase.error || inputNotice.purchase ? "error-text" : ""}`}>{parsedPurchase.error || inputNotice.purchase || "ราคาสินค้ารวม ก่อนหักสิทธิ์รัฐ"}</p>
-              <div className="quick-amounts" aria-label="เลือกยอดซื้อ"><span className="sr-only">เลือกยอดซื้อตัวอย่าง</span>{QUICK_AMOUNTS.map(amount => <button key={amount} type="button" disabled={!ready} onClick={() => editMoney("purchase", String(amount))} aria-pressed={parsedPurchase.value === amount * 100} className={parsedPurchase.value === amount * 100 ? "selected" : ""}>{amount}<span> ฿</span></button>)}</div>
             </div>
             <p className="manual-note"><ShieldCheck size={16} /> ทดลองคำนวณได้ สิทธิ์ที่กรอกจะไม่ถูกหักอัตโนมัติ</p>
           </section>

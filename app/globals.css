@@ -26,8 +26,6 @@ input { scroll-margin-block: 100px; }
 h1 { font-size: 1.8rem; line-height: 1.6; font-weight: 700; letter-spacing: -.04em; }
 h1 > span { color: var(--primary); }
 .heading-description { margin-top: 2px; font-size: .875rem; color: var(--muted); }
-.save-indicator { display: flex; align-items: center; gap: 5px; margin-top: 9px; font-size: .75rem; color: #6e7881; }
-.save-unavailable { color: #9a671f; }
 .calculator-layout { display: grid; gap: 18px; align-items: start; }
 .input-card, .result-card { border: 1px solid #e5e6ef; border-radius: 22px; background: #fff; padding: 20px; box-shadow: 0 5px 18px #25204403; min-width: 0; }
 .section-heading { display: flex; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 19px; }
@@ -60,30 +58,24 @@ h1 > span { color: var(--primary); }
 .clear-input { display: grid; place-items: center; width: 30px; min-height: 44px; flex-shrink: 0; color: #8c85a2; }
 .balance-input:focus-within, .purchase-input:focus-within { border-color: #7963db; background: #fff; box-shadow: 0 0 0 4px #5c48db0b; }
 .field-invalid { border-color: #d96775 !important; background: #fff9fa; }
-.quick-amounts { margin-top: 12px; display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 7px; }
-.quick-amounts button { min-height: 44px; padding: 8px 4px; border: 1px solid #e2e1ec; border-radius: 9px; font-size: .9375rem; font-weight: 500; color: #696678; background: #fff; }
-.quick-amounts button > span { font-size: .75rem; font-weight: 400; }
-.quick-amounts button:hover, .quick-amounts button.selected { border-color: #b2a3ed; color: var(--primary); background: #f1edfe; }
 .manual-note { display: flex; align-items: flex-start; gap: 7px; margin-top: 17px; font-size: .75rem; color: #77788b; line-height: 1.8; }
 .manual-note svg { margin-top: 3px; flex-shrink: 0; }
 .result-card { padding: 20px; }
 .result-badge { display: flex; align-items: center; gap: 3px; font-size: .75rem; color: #838394; }
-.your-payment { background: #f3f0ff; border: 1px solid #e6dffd; border-radius: 15px; padding: 17px 20px; color: #5038c8; }
+.your-payment { background: #eff6ff; border: 1px solid #cddffc; border-radius: 15px; padding: 17px 20px; color: #1d4ed8; }
 .payment-label { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 600; }
 .your-payment-value { display: flex; gap: 8px; align-items: baseline; margin-top: 5px; min-width: 0; }
 .amount { display: inline-block; font-variant-numeric: tabular-nums; letter-spacing: -.045em; overflow-wrap: anywhere; min-width: 0; animation: amount-update .25s ease-out; }
 .your-payment-value > .amount { font-size: clamp(2.6rem, 10vw, 3.5rem); font-weight: 700; line-height: 1.4; }
 .your-payment-value > .amount-long { font-size: clamp(1.6rem, 6vw, 2.5rem); }
 .money-unit { font-size: .9375rem; font-weight: 500; }
-.payment-caption { font-size: .8125rem; color: #796b9c; margin-top: 1px; }
+.payment-caption { font-size: .8125rem; color: #4b6f9f; margin-top: 1px; }
 .government-payment { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 13px; padding: 14px 0; color: var(--green); }
 .government-icon { display: grid; place-items: center; height: 37px; width: 37px; background: #ecf7f1; border-radius: 11px; }
 .government-payment h3 { font-size: .9375rem; font-weight: 600; }
 .government-payment div p { font-size: .75rem; color: #7b837e; margin-top: 1px; }
 .government-value .amount { font-size: 1.6rem; font-weight: 700; }
 .government-value > span:last-child { font-size: .8125rem; }
-.has-shortage .your-payment { color: var(--danger); border-color: #f3d3d8; background: #fff3f4; }
-.has-shortage .payment-caption { color: #b5505e; }
 .shortage-alert { padding: 14px 16px; border: 1px solid #f1c8ce; border-radius: 12px; color: var(--danger); background: #fff6f7; margin: 4px 0 16px; }
 .shortage-alert h3 { font-size: .875rem; font-weight: 600; }
 .shortage-alert > p:last-child { font-size: .75rem; color: #a35965; }
@@ -131,7 +123,6 @@ summary::-webkit-details-marker { display: none; }
   .page-heading { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 27px; }
   h1 { font-size: 2.2rem; }
   .heading-description { font-size: 1rem; }
-  .save-indicator { margin-bottom: 5px; font-size: .8125rem; }
   .calculator-layout { grid-template-columns: 1fr 1fr; gap: 24px; }
   .input-card, .result-card { padding: 28px; }
   .balance-block { padding-bottom: 23px; }
@@ -140,7 +131,6 @@ summary::-webkit-details-marker { display: none; }
   .section-heading h2 { font-size: 1.125rem; }
   .balance-input { padding-block: 12px; }
   .purchase-input { padding-block: 19px; }
-  .quick-amounts { margin-top: 17px; }
   .manual-note { margin-top: 25px; font-size: .8125rem; }
   .help-section { margin-top: 26px; }
   .mobile-summary { display: none; }
