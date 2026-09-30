@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const basePath = process.env.GITHUB_PAGES === "true" || process.env.GITHUB_ACTIONS === "true" ? "/thaiplus-calculator" : (process.env.BASE_PATH || "");
+
 export const metadata: Metadata = {
   title: "ไทยช่วยไทย Plus — คำนวณสิทธิ์และยอดจ่ายเอง",
   description: "คำนวณรัฐช่วยจ่าย 60% สูงสุด 200 บาทต่อวัน แสดงยอดจ่ายเองและส่วนเพิ่มชัดเจน จำข้อมูลในเครื่อง ใช้ง่ายบนมือถือ",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: `${basePath}/favicon.svg`,
+    shortcut: `${basePath}/favicon.svg`,
   },
 };
 
